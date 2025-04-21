@@ -13,6 +13,7 @@ public class Main {
             System.out.println("3 - Percorrer arvore");
             System.out.println("4 - Buscar nodo");
             System.out.println("5 - Criar arvore teste (1 - 10)");
+            System.out.println("6 - Printar a arvore");
             System.out.println("0 - Sair");
             System.out.print("Escolha uma opção: ");
             opcao = sc.nextInt();
@@ -59,6 +60,11 @@ public class Main {
                         tree.root = tree.insert(tree.root, keys[i]);
                     }
                     break;
+                    //Método aque add no ultimo commit, printar a árvore AVL
+                case 6: 
+                    System.out.println("Árvore AVL no formato visual:");
+                    printAVLTree(tree.root, "", true);
+                    break;
 
                 case 0:
                     System.out.println("Encerrando o programa...");
@@ -73,4 +79,19 @@ public class Main {
         sc.close();
 
     }
+
+    // Método pra imprimir árvore AVL no formato visual
+    private static void printAVLTree(Node node, String prefix, boolean isLeft) {
+        if (node != null) {
+            // Imprime o nó atual com a indentação apropriada
+            System.out.println(prefix + (isLeft ? "├── " : "└── ") + node.key);
+
+            String newPrefix = prefix + (isLeft ? "│   " : "    ");
+
+            printAVLTree(node.left, newPrefix, true);
+            printAVLTree(node.right, newPrefix, false);
+        }
+    }
+
+
 }

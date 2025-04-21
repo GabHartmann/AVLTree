@@ -16,7 +16,9 @@ public class AVLTree {
                     : height(nodeToUpdateHeight.right)));
         }
     }
-
+    public Node getRoot() {
+        return root;
+    }
     Node rightRotate(Node k2) {
         Node k1 = k2.left;
         Node y = k1.right;
